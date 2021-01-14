@@ -18,11 +18,10 @@ ALTER TABLE cademp.usuario_permissao ADD CONSTRAINT fk_usuario_permissao_permiss
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-CREATE SEQUENCE usuario_permissao_codigo_seq
+CREATE SEQUENCE cademp.usuario_permissao_codigo_seq
     INCREMENT 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
     START 1
     CACHE 1;
-ALTER TABLE usuario_permissao_codigo_seq OWNER TO postgres;
-ALTER TABLE cademp.usuario_permissao ALTER COLUMN codigo SET DEFAULT nextval('usuario_permissao_codigo_seq'::regclass);
+ALTER TABLE cademp.usuario_permissao ALTER COLUMN codigo SET DEFAULT nextval('cademp.usuario_permissao_codigo_seq'::regclass);
