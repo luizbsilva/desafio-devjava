@@ -1,0 +1,20 @@
+
+<campo-container [formGroup]="formGroup" [label]="label" [ocultarLabel]="ocultarLabel" [name]="name" [readonly]="readonly" [required]="required">
+  <ng-template #campo>
+    <p-dropdown
+      #pDropDown
+      emptyFilterMessage="Nenhum registro encontrado."
+      [autoDisplayFirst]="false"
+      [styleClass]="'w-100 form-control ' + classTamanhoInput"
+      [filter]="filtro"
+      [placeholder]="getLabelDefault()"
+      [options]="options"
+      [inputId]="name"
+      [name]="name"
+      [formControlName]="name"
+      [required]="required"
+      [readonly]="readonly"></p-dropdown>
+  </ng-template>
+</campo-container>
+
+
