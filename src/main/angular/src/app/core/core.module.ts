@@ -17,6 +17,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
 import { MoneyHttp } from '../seguranca/money-http';
 import { GrowlModule } from 'primeng/growl';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { EmpresaService } from '../cadastro/empresa/empresa.service';
 
 registerLocaleData(localePt);
 
@@ -40,6 +41,7 @@ registerLocaleData(localePt);
     ConfirmDialogModule
   ],
   providers: [
+    EmpresaService,
     ErrorHandlerService,
     AuthService,
     MoneyHttp,

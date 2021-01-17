@@ -12,7 +12,7 @@
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="ativo" *ngIf="auth.temPermissao('ROLE_PESQUISAR_EMPRESA')"><a
-        routerLink="/pessoas">Empresas</a></li>
+        routerLink="/empresas">Empresas</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 

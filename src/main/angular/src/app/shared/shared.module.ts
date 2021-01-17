@@ -5,7 +5,7 @@ import { MessageComponent } from './message/message.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [MessageComponent],
   exports: [MessageComponent]

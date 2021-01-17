@@ -1,5 +1,6 @@
 package br.com.desafio.model;
 
+import br.com.desafio.enums.TipoEmpresa;
 import br.com.desafio.enums.TipoUsuario;
 import br.com.desafio.util.Constantes;
 import lombok.Getter;
@@ -14,27 +15,30 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(schema = Constantes.SCHEMA_BANCO, name = "usuario")
-public class Usuario {
+@Table(schema = Constantes.SCHEMA_BANCO, name = "empresa")
+public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    private String nome;
+    private String razaoSocial;
+
+    private String nomeFantasia;
+
+    private String documento;
+
+    private TipoEmpresa tipoEmpresa;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_endereco")
+    private Endereco endereco;
+
+    private String contato;
 
     private String email;
 
-    private String senha;
-
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_usuario")
-    private TipoUsuario tipo;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_permissao", schema = "cademp", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
-    private List<Permissao> permissoes;
+    private String complemento;
 
     @NotNull
     private Boolean ativo;
@@ -58,7 +62,7 @@ public class Usuario {
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        final Usuario other = (Usuario) obj;
+        final Empresa other = (Empresa) obj;
         if (this.codigo == null) {
             if (other.codigo != null) {
                 return false;

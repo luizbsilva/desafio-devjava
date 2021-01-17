@@ -4,10 +4,7 @@ import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
 
 const routes: Routes = [
-  // { path: 'pessoas', loadChildren: './pessoas/pessoas.module#PessoasModule' },
-  // { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-  // { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosModule' },
-  // { path: 'permissoes', loadChildren: './permissoes/permissoes.module#PermissoesModule' },
+  { path: 'empresas', loadChildren: './cadastro/empresa/empresa.module#EmpresaModule' },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }
