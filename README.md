@@ -8,7 +8,7 @@ Antes de dar início, certifique-se que tenha em sua máquina:
 - [ ] Banco de dados Postgres versão 9.5 ou superior;
 - [ ] Node versão 8.0 ou superior;
 - [ ] Maven;
-- [ ] Java 8 ou superior;
+- [ ] Java 8;
 
 ## Primeios passos
 
@@ -28,5 +28,5 @@ Caso não tenha o postgres intalado em sua maquina e queira executar via docker 
 * Conectar Container a rede criada `docker network connect postgresnetwork dockerpostgresql
 
 #####Passos para criação de um novo banco:
-- [ ] Crie um novo banco (postgres) com o nome desejado; Passo para quem ja tiver o Postgres rodando na maquina
+- [ ] Crie um novo banco (postgres) com o nome otimo_empresas;
 - [ ] Crie um `schema` chamado `cademp`;
