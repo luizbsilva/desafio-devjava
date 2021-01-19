@@ -1,0 +1,64 @@
+databaseChangeLog:
+
+- changeSet:
+      id: criacao-tabela-usuario
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/criacao-tabela-usuario.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: criacao-tabela-permissao
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/criacao-tabela-permissao.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: criacao-tabela-usuario-permissao
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/criacao-tabela-permissao-usuario.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: inserir-dados-usuario-permissao-e-permissao-usuario
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/inserir-dados-usuario-permissao-e-permissao-usuario.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: inserir-dados-usuario
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/inserir-dados-usuario.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: criacao-tabela-endereco
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/criacao-tabela-endereco.sql
+            relativeToChangelogFile: true
+
+- changeSet:
+      id: criacao-tabela-empresa
+      author: jose.luiz
+      changes:
+      - sqlFile:
+            encoding: utf8
+            path: sqls/criacao-tabela-empresa.sql
+            relativeToChangelogFile: true
