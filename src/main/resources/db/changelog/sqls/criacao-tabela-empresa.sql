@@ -1,10 +1,11 @@
 CREATE TABLE cademp.empresa (
 	codigo BIGINT,
-	razaoSocial VARCHAR(255) NOT NULL,
-	nomeFantasia VARCHAR(255),
+	razao_social VARCHAR(255) NOT NULL,
+	nome_fantasia VARCHAR(255),
 	documento VARCHAR(255),
-	tipoEmpresa BIGINT,
+	tipo_empresa VARCHAR(255),
 	codigo_endereco BIGINT,
+	codigo_empresa BIGINT,
 	contato VARCHAR(255),
 	email VARCHAR(255),
 	complemento VARCHAR(255),
@@ -12,8 +13,15 @@ CREATE TABLE cademp.empresa (
 	PRIMARY KEY ( codigo ),
     CONSTRAINT unique_empresa_codigo UNIQUE( codigo ));
 
-ALTER TABLE cademp.empresa ADD CONSTRAINT fk_pessoa_endereco FOREIGN KEY (codigo_endereco)
+ALTER TABLE cademp.empresa ADD CONSTRAINT fk_empresa_endereco FOREIGN KEY (codigo_endereco)
 	REFERENCES cademp.endereco(codigo)
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE;
+
+ALTER TABLE cademp.empresa ADD CONSTRAINT fk_empresa_filial FOREIGN KEY (codigo_empresa)
+	REFERENCES cademp.empresa(codigo)
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION

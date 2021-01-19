@@ -1,20 +1,14 @@
 package br.com.desafio.service;
 
-import br.com.desafio.dto.EmpresaDTO;
 import br.com.desafio.dto.EnderecoDTO;
-import br.com.desafio.model.Empresa;
 import br.com.desafio.model.Endereco;
-import br.com.desafio.repository.EmpresaRepository;
 import br.com.desafio.repository.EnderecoRepository;
-import br.com.desafio.repository.EnderecoRepositoryQuery;
+import br.com.desafio.repository.endereco.EnderecoRepositoryQuery;
 import br.com.desafio.util.StringUtil;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class EnderecoService {
@@ -22,11 +16,8 @@ public class EnderecoService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
-    @Autowired
-    private EnderecoRepositoryQuery enderecoRepositoryQuery;
-
     public Endereco validarEndereco(final EnderecoDTO filtro) {
-        final Endereco endereco = this.enderecoRepositoryQuery.buscarEndereco(filtro);
+        final Endereco endereco = this.enderecoRepository.buscarEndereco(filtro);
 
         return (Objects.isNull(endereco)) ? this.salvarNovoEndereco(filtro) : endereco;
 

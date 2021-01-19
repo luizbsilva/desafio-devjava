@@ -8,11 +8,11 @@
             </div>
 
             <div class="ui-g-6 ui-md-6 ui-fluid">
-              <label>CNPJ</label>
-              <p-inputMask [(ngModel)]="filtro.documento" name="documento" mask="00.000.000/0000-00"></p-inputMask>
+                <label>CNPJ</label>
+                <p-inputMask [(ngModel)]="filtro.documento" name="cpf" mask="99.999.999/9999-99"></p-inputMask>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
+            <div class="ui-g-6 ui-fluid">
                 <label>Nome</label>
                 <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
             </div>
@@ -39,22 +39,23 @@
                     </tr>
                 </ng-template>
 
-                <ng-template pTemplate="body" let-pessoa>
+                <ng-template pTemplate="body" let-empresa>
                     <tr>
                         <td>{{ empresa.codigo }}</td>
+                        <td>{{ empresa.nomeFantasia }}</td>
                         <td>{{ empresa.documento }}</td>
                         <td>
-                            <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
-                                tooltipPosition="top" (click)="alternarStatus(pessoa)">
+                            <a href="javascript:;" [pTooltip]="empresa.ativo ? 'Desativar' : 'Ativar'"
+                                tooltipPosition="top" (click)="alternarStatus(empresa)">
                                 {{ empresa.ativo ? 'Ativo' : 'Inativo' }}
                             </a>
                         </td>
                         <td class="col-acoes">
                             <a pButton icon="fa fa-pencil" pTooltip="Editar" tooltipPosition="top"
-                                [routerLink]="['/pessoas', pessoa.codigo]"></a>
+                                [routerLink]="['/empresas', empresa.codigo]"></a>
 
                             <button pButton icon="fa fa-trash" pTooltip="Excluir" tooltipPosition="top"
-                                (click)="confirmarExclusao(pessoa)"></button>
+                                (click)="confirmarExclusao(empresa)"></button>
                         </td>
                     </tr>
                 </ng-template>
@@ -70,7 +71,7 @@
         </div>
 
         <div class="ui-g-12">
-            <a pButton label="Nova Empresa" routerLink="/pessoas/nova"></a>
+            <a pButton label="Nova Empresa" routerLink="/empresas/nova"></a>
         </div>
     </div>
 

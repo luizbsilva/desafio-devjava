@@ -1,4 +1,4 @@
-package br.com.desafio.repository;
+package br.com.desafio.repository.endereco;
 
 import br.com.desafio.dto.EnderecoDTO;
 import br.com.desafio.model.Endereco;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public class EnderecoRepositoryQuery {
+public class EnderecoRepositoryQueryImpl implements EnderecoRepositoryQuery{
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -27,6 +27,7 @@ public class EnderecoRepositoryQuery {
         return this.entityManager;
     }
 
+    @Override
     public Endereco buscarEndereco(final EnderecoDTO filtro) {
         final CriteriaBuilder cb = this.getEntityManager().getCriteriaBuilder();
         final CriteriaQuery<Endereco> criteria = cb.createQuery(Endereco.class);

@@ -1,7 +1,5 @@
 package br.com.desafio.dto;
 
-import br.com.desafio.enums.TipoEmpresa;
-import br.com.desafio.model.Endereco;
 import lombok.Getter;
 import lombok.Setter;
 

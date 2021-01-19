@@ -36,8 +36,9 @@ export class EmpresaPesquisaComponent implements OnInit {
 
         this.empresaService.pesquisar(this.filtro)
             .then(resultado => {
+                console.log(resultado);
                 this.totalRegistros = resultado.total;
-                this.empresas = resultado.pessoas;
+                this.empresas = resultado.empresas;
             })
             .catch(erro => this.errorHandler.handle(erro));
     }
@@ -47,17 +48,17 @@ export class EmpresaPesquisaComponent implements OnInit {
         this.pesquisar(pagina);
     }
 
-    confirmarExclusao(pessoa: any) {
+    confirmarExclusao(empresa: any) {
         this.confirmation.confirm({
             message: 'Tem certeza que deseja excluir?',
             accept: () => {
-                this.excluir(pessoa);
+                this.excluir(empresa);
             }
         });
     }
 
-    excluir(pessoa: any) {
-        this.empresaService.excluir(pessoa.codigo)
+    excluir(empresa: any) {
+        this.empresaService.excluir(empresa.codigo)
             .then(() => {
                 if (this.grid.first === 0) {
                     this.pesquisar();
@@ -78,7 +79,7 @@ export class EmpresaPesquisaComponent implements OnInit {
                 const acao = novoStatus ? 'ativada' : 'desativada';
 
                 empresa.ativo = novoStatus;
-                this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
+                this.messageService.add({ severity: 'success', detail: `Empresa ${acao} com sucesso!` });
             })
             .catch(erro => this.errorHandler.handle(erro));
     }

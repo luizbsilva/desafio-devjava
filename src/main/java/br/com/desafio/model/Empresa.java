@@ -1,7 +1,6 @@
 package br.com.desafio.model;
 
 import br.com.desafio.enums.TipoEmpresa;
-import br.com.desafio.enums.TipoUsuario;
 import br.com.desafio.util.Constantes;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,14 +8,13 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 @Table(schema = Constantes.SCHEMA_BANCO, name = "empresa")
-public class Empresa {
+public class Empresa extends EntidadeBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +26,16 @@ public class Empresa {
 
     private String documento;
 
+    @Enumerated(EnumType.STRING)
     private TipoEmpresa tipoEmpresa;
 
     @ManyToOne
     @JoinColumn(name = "codigo_endereco")
     private Endereco endereco;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_empresa")
+    private Empresa empresaMatriz;
 
     private String contato;
 
@@ -72,5 +75,4 @@ public class Empresa {
         }
         return true;
     }
-
 }

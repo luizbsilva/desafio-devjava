@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(schema = Constantes.SCHEMA_BANCO, name = "usuario")
-public class Usuario {
+public class Usuario extends EntidadeBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

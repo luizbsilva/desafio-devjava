@@ -12,11 +12,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(schema = Constantes.SCHEMA_BANCO, name = "endereco")
-public class Endereco {
+public class Endereco extends EntidadeBase {
 
     @Id
-    @Column(name = "end_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long codigo;
 
     @Column(name = "end_logradouro", nullable = false)
     private String logradouro;

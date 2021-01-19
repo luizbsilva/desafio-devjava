@@ -4,10 +4,12 @@ import br.com.desafio.config.property.ApiProperty;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 @EnableConfigurationProperties(ApiProperty.class)
+@EnableCaching
 public class Application {
     
     private static ApplicationContext applicationContext;

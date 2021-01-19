@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Entity
 @Table(schema = Constantes.SCHEMA_BANCO, name = "permissao")
-public class Permissao {
+public class Permissao extends EntidadeBase {
 
     @Id
     private Long codigo;

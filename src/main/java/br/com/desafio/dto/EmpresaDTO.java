@@ -1,6 +1,7 @@
 package br.com.desafio.dto;
 
 import br.com.desafio.enums.TipoEmpresa;
+import br.com.desafio.model.Empresa;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,8 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 public class EmpresaDTO {
+
+    private Long codigo;
 
     @NotNull(message = "A Razão Social não pode ser nula")
     @Size(max = 50, message
@@ -39,7 +42,20 @@ public class EmpresaDTO {
             = "E-mail deve conter entre 3 e 50 caracteres")
     private String email;
 
-    private EnderecoDTO enderecoDTO;
+    private EnderecoDTO endereco;
 
     private String complemento;
+
+    private DadosBasicosEmpresaDTO empresaMatriz;
+
+    public void preencher(Empresa empresa) {
+
+        empresa.setDocumento(this.documento);
+        empresa.setNomeFantasia(this.nomeFantasia);
+        empresa.setTipoEmpresa(this.tipoEmpresa);
+        empresa.setRazaoSocial(this.razaoSocial);
+        empresa.setContato(this.contato);
+        empresa.setComplemento(this.complemento);
+        empresa.setEmail(this.email);
+    }
 }

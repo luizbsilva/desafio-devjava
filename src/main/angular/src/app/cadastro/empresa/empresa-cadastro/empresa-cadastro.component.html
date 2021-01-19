@@ -1,0 +1,147 @@
+<div class="container">
+  <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>{{ editando ? 'Edição de' : 'Nova' }} Empresa</h1>
+      </div>
+
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>CNPJ</label>
+        <p-inputMask formControlName="documento" name="cpf" mask="99.999.999/9999-99"></p-inputMask>
+
+        <app-message [control]="formulario.get('documento')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message> 
+        <app-message [control]="formulario.get('documento')" error="documentoValido" text="CNPJ Inválido">
+        </app-message>
+        <app-message [control]="formulario.get('documento')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('documento').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Tipo Empresa</label>
+        <p-dropdown name="tipoEmpresa" [options]="tipos" placeholder="Selecione" [filter]="true"
+          (onChange)="empresaMatriz($event)" formControlName="tipoEmpresa"></p-dropdown>
+
+        <app-message [control]="formulario.get('tipoEmpresa')" error="obrigatoriedade" text="Informe o Tipo da Empresa">
+        </app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-12 ui-fluid" *ngIf="formulario.get('tipoEmpresa').value == 'FILIAL'" formGroupName="empresaMatriz">
+        <label>Empresa Matriz</label>
+        <p-dropdown name="empresaMatriz" [options]="empresas" placeholder="Selecione" [filter]="true"
+          formControlName="codigo"></p-dropdown>
+      </div>
+
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Nome Empresa</label>
+        <input pInputText type="text" name="nomeFantasia" formControlName="nomeFantasia">
+
+        <app-message [control]="formulario.get('nomeFantasia')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('nomeFantasia')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('nomeFantasia').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Razão Social</label>
+        <input pInputText type="text" name="razaoSocial" formControlName="razaoSocial">
+
+        <app-message [control]="formulario.get('razaoSocial')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('razaoSocial')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('razaoSocial').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Contato</label>
+        <input pInputText type="text" name="contato" formControlName="contato">
+
+        <app-message [control]="formulario.get('contato')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('contato')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('contato').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>E-mail</label>
+        <input pInputText type="text" name="email" formControlName="email">
+
+        <app-message [control]="formulario.get('email')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('email')" error="emailValidado" text="E-mail Inválido">
+        </app-message>
+        <app-message [control]="formulario.get('email')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('email').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+
+      <div class="ui-g-4 ui-md-4 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask formControlName="cep" name="cep" mask="99.999-999"></p-inputMask>
+
+        <app-message [control]="formulario.get('cep')" error="obrigatoriedade" text="Informe o CEP">
+        </app-message>
+        <app-message [control]="formulario.get('cep')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('cep').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-2">
+        <button pButton type="button" label="Buscar CEP" class="ui-button-info" (click)="buscarCep()"
+          [disabled]="formulario.get('cep').invalid"></button>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Estado</label>
+        <input pInputText type="text" name="uf" formControlName="uf">
+
+        <app-message [control]="formulario.get('uf')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('uf')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('uf').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" formControlName="bairro">
+
+        <app-message [control]="formulario.get('bairro')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('bairro')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('bairro').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+        <input pInputText type="text" name="localidade" formControlName="localidade">
+
+        <app-message [control]="formulario.get('localidade')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('localidade')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('localidade').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" formControlName="logradouro">
+
+        <app-message [control]="formulario.get('logradouro')" error="obrigatoriedade" text="Informe a descrição">
+        </app-message>
+        <app-message [control]="formulario.get('logradouro')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('logradouro').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-6 ui-md-6 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text" name="complemento" formControlName="complemento">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo()"></button>
+        <a routerLink="/empresas">Voltar para a pesquisa</a>
+      </div>
+    </div>
+  </form>
+</div>

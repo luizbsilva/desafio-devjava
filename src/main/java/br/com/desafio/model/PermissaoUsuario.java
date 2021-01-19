@@ -10,20 +10,20 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(schema = Constantes.SCHEMA_BANCO, name = "usuario_permissao")
-public class PermissaoUsuario {
-    
+public class PermissaoUsuario extends EntidadeBase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_permissao")
     private Permissao permissao;
-    
+
     @ManyToOne
     @JoinColumn(name = "codigo_usuario")
     private Usuario usuario;
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -31,7 +31,7 @@ public class PermissaoUsuario {
         result = prime * result + ((this.codigo == null) ? 0 : this.codigo.hashCode());
         return result;
     }
-    
+
     @Override
     public boolean equals(final Object obj) {
         if (this == obj) {
@@ -53,5 +53,5 @@ public class PermissaoUsuario {
         }
         return true;
     }
-    
+
 }
